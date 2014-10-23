@@ -12,7 +12,7 @@ opencv_contrib:
 opencv:
 	git clone https://github.com/itseez/opencv.git
 
-opencv/release: | opencv opencv_contrib
+opencv/release: | opencv
 	mkdir opencv/release
 
 opencv/release/Makefile: | opencv/release opencv_contrib
