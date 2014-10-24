@@ -21,7 +21,7 @@ opencv/release/Makefile: | opencv/release opencv_contrib
 opencv/release/lib/libopencv_core.so: build
 
 build: opencv/release/Makefile
-	make -C opencv/release -j $$(( $$(nproc) - 1 )) 
+	make -C opencv/release -j $$(( $$(nproc) - 1 )) -l $$(nproc)
 
 install: opencv/release/lib/libopencv_core.so
 	sudo make -C opencv/release install
