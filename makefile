@@ -15,6 +15,7 @@ opencv_contrib:
 
 opencv:
 	git clone https://github.com/itseez/opencv.git
+	git checkout 3.0.0-beta
 
 opencv/release: | opencv
 	mkdir opencv/release
