@@ -5,7 +5,7 @@ update: | opencv opencv_contrib
 	cd opencv_contrib/ && git pull origin master
 
 dep:
-	sudo apt-get install cmake git checkinstall build-essential libdc1394-22-dev libv4l-dev libavcodec-dev libavutil-dev libavformat-dev libavutil-dev libswscale-dev libx264-dev libeigen3-dev libgtk2.0-dev libgstreamer1.0-dev libgstreamer-vaapi1.0-dev libtbb-dev libfaac0 libgtkglext1 libilmbase-dev libjasper-dev libjbig-dev liblzma-dev libopenexr-dev libtiff5-dev libtiffxx5
+	sudo apt-get install cmake git checkinstall build-essential libdc1394-22-dev libv4l-dev libavcodec-dev libavutil-dev libavformat-dev libavutil-dev libswscale-dev libx264-dev libeigen3-dev libgtk2.0-dev libgstreamer1.0-dev libgstreamer-vaapi1.0-dev libtbb-dev libgtkglext1 libilmbase-dev libjasper-dev libjbig-dev liblzma-dev libopenexr-dev libtiff5-dev libtiffxx5
 	
 dep-graphic: dep
 	sudo apt-get install libqt4-dev libqt4-opengl-dev
