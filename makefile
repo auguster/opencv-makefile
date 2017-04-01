@@ -11,11 +11,10 @@ dep-graphic: dep
 	sudo apt-get install -y libqt4-dev libqt4-opengl-dev
 
 opencv_contrib:
-	git clone https://github.com/itseez/opencv_contrib.git
+	git clone -b 3.2.0 https://github.com/opencv/opencv_contrib
 
 opencv:
-	git clone https://github.com/itseez/opencv.git
-	cd opencv && git checkout 3.0.0-beta
+	git clone -b 3.2.0 https://github.com/opencv/opencv
 
 opencv/release: | opencv
 	mkdir opencv/release
