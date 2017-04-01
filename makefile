@@ -31,7 +31,7 @@ build: opencv/release/Makefile
 
 opencv.deb: opencv/release/lib/libopencv_core.so
 	echo "OpenCV library compiled from git repository along with the contrib" > description-pak
-	sudo checkinstall --install=no --maintainer="$(USER)" --nodoc --pkgname="opencv" --provides="opencv" --deldesc=yes --delspec=yes --backup=no --fstrans=yes --default\
+	sudo checkinstall --install=no --pkgversion="3.2.0" --maintainer="$(USER)" --nodoc --pkgname="opencv" --provides="opencv" --deldesc=yes --delspec=yes --backup=no --fstrans=yes --default\
 		--requires="libdc1394-22-dev,libv4l-dev,libavcodec-dev,libavutil-dev,libavformat-dev,libavutil-dev,libswscale-dev,libx264-dev,libeigen3-dev,libgtk2.0-dev,libgstreamer1.0-dev,libgstreamer-vaapi1.0-dev,libtbb-dev,libfaac0,libgtkglext1,libilmbase-dev,libjasper-dev,libjbig-dev,liblzma-dev,libopenexr-dev,libtiff5-dev,libtiffxx5"\
 		--replaces="libopencv-dev"\
 		 make -C $(PWD)/opencv/release/ install
