@@ -34,7 +34,7 @@ opencv.deb: opencv/release/lib/libopencv_core.so
 	sudo checkinstall --install=no --pkgversion="3.2.0" --maintainer="$(USER)" --nodoc --pkgname="opencv" --provides="opencv" --deldesc=yes --delspec=yes --backup=no --fstrans=yes --default\
 		--requires="libdc1394-22-dev,libv4l-dev,libavcodec-dev,libavutil-dev,libavformat-dev,libavutil-dev,libswscale-dev,libx264-dev,libeigen3-dev,libgtk2.0-dev,libgstreamer1.0-dev,libgstreamer-plugins-base1.0-dev,libtbb-dev,libfaac0,libgtkglext1,libilmbase-dev,libjasper-dev,libjbig-dev,liblzma-dev,libopenexr-dev,libtiff5-dev,libtiffxx5"\
 		--replaces="libopencv-dev"\
-		 make -C $(PWD)/opencv/release/ install
+		 make -C opencv/release/ install -j $$(( $$(nproc) - 1 )) -l $$(nproc)
 	rm description-pak
 	sudo mv opencv_*_*.deb opencv.deb
 
