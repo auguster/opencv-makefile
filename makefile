@@ -11,10 +11,10 @@ dep-graphic: dep
 	sudo apt-get install -y libqt4-dev libqt4-opengl-dev
 
 opencv_contrib:
-	git clone -b 3.2.0 https://github.com/opencv/opencv_contrib
+	git clone -b 3.4 --depth 1 https://github.com/opencv/opencv_contrib
 
 opencv:
-	git clone -b 3.2.0 https://github.com/opencv/opencv
+	git clone -b 3.4 --depth 1 https://github.com/opencv/opencv
 
 opencv/release: | opencv
 	mkdir opencv/release
@@ -29,9 +29,9 @@ opencv/release/lib/libopencv_core.so: build
 build: opencv/release/Makefile
 	make -C opencv/release -j $$(( $$(nproc) - 1 )) -l $$(nproc)
 
-opencv.deb: opencv/release/lib/libopencv_core.so
+opencv.deb: opencv/release/Makefile
 	echo "OpenCV library compiled from git repository along with the contrib" > description-pak
-	sudo checkinstall --install=no --pkgversion="3.2.0" --maintainer="$(USER)" --nodoc --pkgname="opencv" --provides="opencv" --deldesc=yes --delspec=yes --backup=no --fstrans=yes --default\
+	sudo checkinstall --install=no --pkgversion="3.4" --maintainer="$(USER)" --nodoc --pkgname="opencv" --provides="opencv" --deldesc=yes --delspec=yes --backup=no --fstrans=yes --default\
 		--requires="libdc1394-22-dev,libv4l-dev,libavcodec-dev,libavutil-dev,libavformat-dev,libavutil-dev,libswscale-dev,libx264-dev,libeigen3-dev,libgtk2.0-dev,libgstreamer1.0-dev,libgstreamer-plugins-base1.0-dev,libtbb-dev,libgtkglext1,libilmbase-dev,libjasper-dev,libjbig-dev,liblzma-dev,libopenexr-dev,libtiff5-dev,libtiffxx5"\
 		--replaces="libopencv-dev"\
 		 make -C opencv/release/ install -j $$(( $$(nproc) - 1 )) -l $$(nproc)
