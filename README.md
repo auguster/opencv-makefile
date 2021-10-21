@@ -32,6 +32,14 @@ Then build using the following command:
 make options="-DWITH_CUDA=ON"
 ```
 
+# Non Free
+To include the non-free algorithm, add `-DOPENCV_ENABLE_NONFREE=ON` to the options (separated by spaces).
+
+For example:
+```bash
+make options="-DWITH_CUDA=ON -DOPENCV_ENABLE_NONFREE=ON"
+```
+
 # Known Issues
 * If the package is already installed, the symlinks for the `.so` files are sometimes not created. One fix seems to uninstall the package before installing it again.
 * The dependancies in the package might be outdated or incomplete, this might cause issues if you build the package on one machine and install it on another with apt. You might have some package missing at runtime.
@@ -42,6 +50,7 @@ make options="-DWITH_CUDA=ON"
 * Bump OpenCV version to 4.5.4
 * PkgConfig file is now created to use with cmake, package name is `opencv4`. Check if correctly installed with `pkg-config --libs opencv4`.
 * Improved Documentation (including this changelog)
+* Instructions for nonfree OpenCV packages
 
 # Author
 Dr Rémi AUGUSTE <remi.auguste@gmail.com>
