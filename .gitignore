@@ -1,4 +1,4 @@
 opencv/
 opencv_contrib/
-opencv.deb
+*.deb
 description-pak
