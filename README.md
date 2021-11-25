@@ -9,6 +9,17 @@ If you want to manually install the deb package you can run:
 sudo apt install ./opencv.deb
 ```
 
+# What's new
+
+## November 2021
+* Improving documentation for Nvidia Cuda build
+
+## October 2021
+* Bump OpenCV version to 4.5.4
+* PkgConfig file is now created to use with cmake, package name is `opencv4`. Check if correctly installed with `pkg-config --libs opencv4`.
+* Improved Documentation (including this changelog)
+* Instructions for nonfree OpenCV packages
+
 # Available targets:
 
 * `update`: updates the opencv/ and opencv_contrib/ folders with latest git commits
@@ -32,6 +43,14 @@ Then build using the following command:
 make options="-DWITH_CUDA=ON"
 ```
 
+## Build Faster
+To build faster, you can specify the specific CUDA architecture you want to build for. It really speeds the build by a lot.
+To do this, go on Nvidia's website to figure out the compute capability of your GPU: https://developer.nvidia.com/cuda-gpus
+
+Then give this value to the options by adding `-D CUDA_ARCH_BIN=7.5` (for exemple for a compute capability of 7.5).
+
+Your 
+
 # Non Free
 To include the non-free algorithm, add `-DOPENCV_ENABLE_NONFREE=ON` to the options (separated by spaces).
 
@@ -43,14 +62,6 @@ make options="-DWITH_CUDA=ON -DOPENCV_ENABLE_NONFREE=ON"
 # Known Issues
 * If the package is already installed, the symlinks for the `.so` files are sometimes not created. One fix seems to uninstall the package before installing it again.
 * The dependancies in the package might be outdated or incomplete, this might cause issues if you build the package on one machine and install it on another with apt. You might have some package missing at runtime.
-
-# Changelog
-
-## October 2021
-* Bump OpenCV version to 4.5.4
-* PkgConfig file is now created to use with cmake, package name is `opencv4`. Check if correctly installed with `pkg-config --libs opencv4`.
-* Improved Documentation (including this changelog)
-* Instructions for nonfree OpenCV packages
 
 # Author
 Dr Rémi AUGUSTE <remi.auguste@gmail.com>
