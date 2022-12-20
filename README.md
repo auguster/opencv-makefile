@@ -62,7 +62,7 @@ For example:
 make options="-DWITH_CUDA=ON -DOPENCV_ENABLE_NONFREE=ON"
 ```
 
-# Build Using Docker
+# Build Using Docker
 In order to build OpenCV for Cuda with Docker you can execute the `build-with-docker.sh` script.
 This script requires the Nvidia runtime to be installed and the default runtime of Docker.
 
