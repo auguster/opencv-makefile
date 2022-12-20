@@ -11,6 +11,9 @@ sudo apt install ./opencv.deb
 
 # What's new
 
+## December 2022
+* Added a new way to build OpenCV with CUDA using Docker. This provide more portability of OpenCV as it can easily be deployed in a Docker container.
+
 ## November 2021
 * Improving documentation for Nvidia Cuda build
 
@@ -58,6 +61,12 @@ For example:
 ```bash
 make options="-DWITH_CUDA=ON -DOPENCV_ENABLE_NONFREE=ON"
 ```
+
+# Build Using Docker
+In order to build OpenCV for Cuda with Docker you can execute the `build-with-docker.sh` script.
+This script requires the Nvidia runtime to be installed and the default runtime of Docker.
+
+At the end of the build, an `opencv.deb` file has been produced.
 
 # Known Issues
 * If the package is already installed, the symlinks for the `.so` files are sometimes not created. One fix seems to uninstall the package before installing it again.
