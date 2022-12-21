@@ -12,7 +12,9 @@ sudo apt install ./opencv.deb
 # What's new
 
 ## December 2022
+* Dockerfile as been updated to provide a multistage build of OpenCV with Cuda and Cudnn (for developpment and runtime)
 * Added a new way to build OpenCV with CUDA using Docker. This provide more portability of OpenCV as it can easily be deployed in a Docker container.
+* Release artefacts now provide a ready-to-use deb package for Ubuntu 18.04 with Cuda and Cudnn
 
 ## November 2021
 * Improving documentation for Nvidia Cuda build
