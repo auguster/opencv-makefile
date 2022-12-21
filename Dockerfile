@@ -1,9 +1,15 @@
-FROM ubuntu:14.10
-MAINTAINER Rémi AUGUSTE <remi.auguste@gmail.com>
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu18.04 as build
+WORKDIR /var/build
 
-RUN apt-get update && apt-get install -q -y \
-	wget \
-	build-essential
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive make dep
+RUN make options='-DWITH_CUDA=ON -DOPENCV_ENABLE_NONFREE=ON' opencv/release/Makefile
+RUN make opencv.deb
 
-COPY makefile .
-RUN make dep && make && make mrproper
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu18.04 as devel
+COPY --from=build /var/build/opencv.deb .
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq ./opencv.deb && rm opencv.deb
+
+FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu18.04 as runtime
+COPY --from=build /var/build/opencv.deb .
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq ./opencv.deb && rm opencv.deb
